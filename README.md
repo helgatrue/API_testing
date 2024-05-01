@@ -1,59 +1,73 @@
-# Senior QA Engineer Technical Test
+# Overview
+REST API functional tests for https://jsonplaceholder.typicode.com/
 
-Welcome to the Senior QA Engineer Technical Test. This test is designed to assess your skills and expertise in quality assurance and automation. Please read the following problem statements carefully and complete the tasks accordingly.
+## Software requirements 
+- Python v3.10.12 and higher
+- Pytest v8.2.0
+- Allure v2.13.5
 
-## Problem Statement 1: JSONPlaceholder CRUD Operation Testing
+## Test structure
+The tests are written against a black box and cover the `/posts` resource with actions on it (get, create, update, delete).
+The tests are written using the following test design techniques: Boundary Value Analysis, Equivalence Partitioning, Use Case Testing, Error Guessing.
+Information about available resources is taken from https://jsonplaceholder.typicode.com/.
 
-**Background:**
-Imagine you are working as a Senior QA Engineer for a web application. The application uses JSONPlaceholder as a RESTful API to manage posts. Your task is to create a comprehensive set of test scenarios and test cases covering the CRUD (Create, Read, Update, Delete) operations for the `/posts` resource provided by JSONPlaceholder.
+The tests are separated by the following tests, parameterized and contain several test scenarios:
 
-**API Endpoint:**
-- Base URL: https://jsonplaceholder.typicode.com
-- Resource: `/posts`
-- Supported HTTP Methods: GET, POST, PUT, DELETE
+| Test | Scenario | 
+| :---         |     :---      | 
+| `test_01_get_request`    |**Positve**: response from `/posts/1` with  expected code **200**| 
+|     |**Positve**: response from `/posts/` with  expected code **200**| 
+|     |**Positve**: response from `/posts/100` with  expected code **200**| 
+|     |**Positve**: response from `/posts/100/comments` with  expected code **200**| 
+|     |**Negative**: response from `/posts/0` with  expected code **400**| 
+|     |**Negative**: response from `/posts/O` with  expected code **400**| 
+|     |**Negative**: response from `/posts/!` with  expected code **404**| 
+|     |**Negative**: response from `/posts/101` with  expected code **404**| 
+|     |**Negative**: response from `/posts/101/comments` with  expected code **404**| 
+|`test_02_get_request_for_id`|**Positve**: check expected data for id=64| 
+|`test_03_post_request` |**Positve**: testing POST request with valid data| 
+| |**Negative**: testing POST request with invalid userId| 
+| |**Negative**: testing POST request with invalid body| 
+| |**Negative**: testing POST request without userId| 
+| |**Negative**: testing POST request with empty value| 
+| |**Negative**: testing POST request without body| 
+|`test_04_put_request` |**Positve**: send `/posts/1` with valid data| 
+| |**Positve**: send `/posts/1` with valid data| 
+| |**Negative**: send `/posts/1` with empty value| 
+| |**Negative**: send `/posts/1` with empty body| 
+| |**Negative**: send `/posts/1` with id key| 
+| |**Negative**: send `/posts/101` with invalid userId| 
+|`test_05_delete_request` |**Positve**: send `/posts/1` with  expected code **200**| 
+|  |**Positve**: send `/posts/100` with  expected code **200**| 
+|  |**Negative**: send `/posts/0` with  expected code **404**| 
+|  |**Negative**: send `/posts/101` with  expected code **404**| 
+|  |**Negative**: send `/posts/ ` with  expected code **404**| 
 
-**Tasks:**
-1. Create a document or a set of Python test scripts using pytest that detail all possible test scenarios for the CRUD operations on the `/posts` resource.
-2. Write pytest test cases to validate each of the identified scenarios. Ensure that your test cases are well-organized and easy to understand.
-3. Implement proper test data management techniques, including setup and teardown.
-4. Use the requests library in Python to interact with the JSONPlaceholder API.
-5. Provide clear and concise documentation on how to run your tests.
 
-**Deliverables:**
-1. A document or Python test suite that contains the test scenarios and pytest test cases.
-2. Clear and concise instructions on how to execute the test suite.
 
-**Evaluation Criteria:**
-Your test suite will be evaluated based on the following criteria:
-- Correctness: The tests should accurately assess the functionality of the JSONPlaceholder API.
-- Code Quality: The pytest test cases should be well-structured, maintainable, and follow best practices.
-- Test Data Management: Proper handling of test data, including setup and teardown.
-- Reporting: Test results should be well-documented and easily accessible.
-- Documentation: Clear and concise instructions on how to run the tests.
-- Version Control: Proper use of Git for version control.
+# How to run tests
+- Install [python3](https://www.python.org/downloads/)
+- Go to the project folder and run
 
----
+**Install all libraries from requirements.txt:**
+```
+pip3 install -r requirements.txt
+```
 
-## Problem Statement 2: Fintech Integration Test Suite
+**Run tests:**
+```
+pytest src/tests/test_posts.py
+```
 
-**Background:**
-Imagine you are working as a Senior QA Engineer for a fintech company. The company provides financial services, including incoming and outgoing fund transfers. Your team is responsible for creating an integration test suite that can be incorporated into a Jenkins pipeline to assure the functionality of the application with every release.
+## If you'd like to see test report
+- Install [allure](https://allurereport.org/docs/pytest/).
+- Run tests:
+```
+pytest --alluredir=reports src/tests/test_posts.py
+```
 
-**Tasks:**
-1. Identify and list all the test cases that should be included in the integration test suite to validate the fintech application's core features, including incoming and outgoing fund transfers.
-2. Design and structure your test cases to ensure comprehensive coverage of the application's functionality.
-3. Consider edge cases, negative scenarios, and potential issues that should be tested.
-4. Suggest any areas or points for improvement that can make the release process less error-prone and more reliable.
-5. Describe how this integration test suite can be incorporated into a Jenkins pipeline for automated testing.
-
-**Deliverables:**
-1. A document or structured list that contains all the identified test cases with descriptions.
-2. Suggestions for improving the reliability of the release process.
-3. A brief explanation of how the integration test suite can be integrated into a Jenkins pipeline.
-
-**Evaluation Criteria:**
-Your test suite design and suggestions will be evaluated based on their comprehensiveness, attention to detail, and ability to ensure the reliability of the fintech application's releases.
-
----
-
-Feel free to ask any questions or seek clarifications if needed. Good luck!
+**Create allure report:**
+```
+allure serve reports
+```
+The results of the test run will be build in the visual report.
