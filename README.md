@@ -46,24 +46,32 @@ The tests are separated by the following tests, parameterized and contain severa
 
 
 # How to run tests
+
+## Run locally
 - Install [python3](https://www.python.org/downloads/)
 - Go to the project folder and run
-
+- 
 **Install all libraries from requirements.txt:**
 ```
 pip3 install -r requirements.txt
 ```
 
-**Run tests:**
+**Run:**
 ```
 pytest src/tests/test_posts.py
+```
+
+## Run tests in docker
+```
+docker-compose build
+docker-compose up
 ```
 
 ## If you'd like to see test report
 - Install [allure](https://allurereport.org/docs/pytest/).
 - Run tests:
 ```
-pytest --alluredir=reports src/tests/test_posts.py
+pytest --alluredir=reports tests/test_posts.py
 ```
 
 **Create allure report:**
