@@ -50,7 +50,7 @@ The tests are separated by the following tests, parameterized and contain severa
 ## Run locally
 - Install [python3](https://www.python.org/downloads/)
 - Go to the project folder and run
-- 
+
 **Install all libraries from requirements.txt:**
 ```
 pip3 install -r requirements.txt
