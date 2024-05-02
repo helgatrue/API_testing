@@ -46,6 +46,9 @@ The tests are separated by the following tests, parameterized and contain severa
 
 
 # How to run tests
+- [Locally](https://github.com/helgatrue/API_testing/blob/main/README.md#run-locally)
+- [In Docker](https://github.com/helgatrue/API_testing/blob/main/README.md#run-tests-in-docker)
+- [With Allure](https://github.com/helgatrue/API_testing/blob/main/README.md#if-youd-like-to-see-test-report)
 
 ## Run locally
 - Install [python3](https://www.python.org/downloads/)
