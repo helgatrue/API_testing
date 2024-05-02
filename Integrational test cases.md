@@ -1,3 +1,8 @@
+# Overview
+- [Test documentation](https://github.com/helgatrue/API_testing/blob/main/Integrational%20test%20cases.md#-test-documentation)
+- [Suggestions for improvement](https://github.com/helgatrue/API_testing/blob/main/Integrational%20test%20cases.md#-suggestions-for-improvement)
+- [Integration with Jenkins pipeline](https://github.com/helgatrue/API_testing/blob/main/Integrational%20test%20cases.md#-integration-with-jenkins-pipeline)
+
 ### 📄 Test documentation
 
 | ID  | Test case                                                                            | Description                                                                                                                                                                                                                                                                                                                                   |
@@ -36,7 +41,7 @@
 | 26  | Compliance validation with security standards (e.g., PCI-DSS).                       | Confirm that the application complies with security standards like PCI-DSS to ensure the protection of sensitive data and adherence to industry regulations.                                                                                                                                                                                  | 
 |     | **Performance and Scalability**                                                      |                                                                                                                                                                                                                                                                                                                                               | 
 | 27  | Application response times under normal and peak loads                               | Assess the application's response times under both normal and peak loads to ensure acceptable performance levels and user experience, helping to identify any potential performance bottlenecks or scalability issues.                                                                                                                        | 
-| 28  | Increasing user loads should not affect on app                                     | Verify that increasing user loads do not adversely affect the performance or functionality of the application, ensuring that it remains responsive and stable even under heavy traffic conditions.                                                                                                                                            | 
+| 28  | Increasing user loads should not affect the app                                     | Verify that increasing user loads do not adversely affect the performance or functionality of the application, ensuring that it remains responsive and stable even under heavy traffic conditions.                                                                                                                                            | 
 | 29  | Concurrent transactions should be handled properly                                   | Ensure that the application handles concurrent transactions appropriately, maintaining data integrity and preventing conflicts or errors that may arise when multiple transactions occur simultaneously.                                                                                                                                      | 
 |     | **Integration with External Systems**                                                |                                                                                                                                                                                                                                                                                                                                               | 
 | 30  | Third-party payment gateways and banking systems should work correctly               | Check if third-party payment gateways and banking systems function properly.                                                                                                                                                                                                                                                                  | 
@@ -47,6 +52,10 @@
 - Implement a full logging approach to support debugging and auditing.
 - Expand monitoring capabilities to detect anomalies and performance degradation in real time.
 - Implement a reliable disaster recovery plan to minimize downtime and data loss in case of system failures.
+- Make the schedule for releases.
+- Automate tests for regression testing as much as it is possible.
+- Create release notes.
+- For new features make A/B testing.
 
 
 ### 🤝 Integration with Jenkins pipeline
