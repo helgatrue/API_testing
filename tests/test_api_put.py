@@ -22,7 +22,7 @@ class TestPosts:
         assert body["userId"] == "1", "Post was created has wrong user id"
 
     @allure.title('Check that PUT request with invalid body has status code 400')
-    def test_18_put_valid_request(self, api):
+    def test_18_put_invalid_request(self, api):
         endpoint = "/posts/1"
         data = {"id": " ", "title": " ", "body": " ", "userId": " "}
         status_code, body = api.put(endpoint, data)
@@ -31,7 +31,7 @@ class TestPosts:
                 .format(status_code, 400)
 
     @allure.title('Check that PUT request with empty body has status code 400')
-    def test_19_put_valid_request(self, api):
+    def test_19_put_invalid_request(self, api):
         endpoint = "/posts/1"
         data = {}
         status_code, body = api.put(endpoint, data)
@@ -40,7 +40,7 @@ class TestPosts:
                 .format(status_code, 400)
 
     @allure.title('Check that PUT request with invalid id has status code 400')
-    def test_20_put_valid_request(self, api):
+    def test_20_put_invalid_request(self, api):
         endpoint = "/posts/1"
         data = {"id": 101}
         status_code, body = api.put(endpoint, data)
@@ -49,7 +49,7 @@ class TestPosts:
                 .format(status_code, 400)
 
     @allure.title('Check that PUT request with invalid endpoint has status code 404')
-    def test_21_put_valid_request(self, api):
+    def test_21_put_invalid_request(self, api):
         endpoint = "/posts/101"
         data = {"title": "foo", "body": "bar", "userId": "1"}
         status_code, body = api.put(endpoint, data)

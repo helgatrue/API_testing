@@ -13,35 +13,34 @@ Information about available resources is taken from https://jsonplaceholder.typi
 
 The tests are separated by the following tests, parameterized and contain several test scenarios:
 
-| Test | Scenario | 
-| :---         |     :---      | 
-| `test_01_get_request`    |**Positve**: response from `/posts/1` with  expected code **200**| 
-|     |**Positve**: response from `/posts/` with  expected code **200**| 
-|     |**Positve**: response from `/posts/100` with  expected code **200**| 
-|     |**Positve**: response from `/posts/100/comments` with  expected code **200**| 
-|     |**Negative**: response from `/posts/0` with  expected code **400**| 
-|     |**Negative**: response from `/posts/O` with  expected code **400**| 
-|     |**Negative**: response from `/posts/!` with  expected code **404**| 
-|     |**Negative**: response from `/posts/101` with  expected code **404**| 
-|     |**Negative**: response from `/posts/101/comments` with  expected code **404**| 
-|`test_02_get_request_for_id`|**Positve**: check expected data for id=64| 
-|`test_03_post_request` |**Positve**: testing POST request with valid data| 
-| |**Negative**: testing POST request with invalid userId| 
-| |**Negative**: testing POST request with invalid body| 
-| |**Negative**: testing POST request without userId| 
-| |**Negative**: testing POST request with empty value| 
-| |**Negative**: testing POST request without body| 
-|`test_04_put_request` |**Positve**: send `/posts/1` with valid data| 
-| |**Positve**: send `/posts/1` with valid data| 
-| |**Negative**: send `/posts/1` with empty value| 
-| |**Negative**: send `/posts/1` with empty body| 
-| |**Negative**: send `/posts/1` with id key| 
-| |**Negative**: send `/posts/101` with invalid userId| 
-|`test_05_delete_request` |**Positve**: send `/posts/1` with  expected code **200**| 
-|  |**Positve**: send `/posts/100` with  expected code **200**| 
-|  |**Negative**: send `/posts/0` with  expected code **404**| 
-|  |**Negative**: send `/posts/101` with  expected code **404**| 
-|  |**Negative**: send `/posts/ ` with  expected code **404**| 
+| Test                           | Scenario                                                                      | 
+|:-------------------------------|:------------------------------------------------------------------------------| 
+| `test_01_get_valid_request`    | **Positve**: response from `/posts/1` with  expected code **200**             | 
+| `test_02_get_valid_request`    | **Positve**: response from `/posts/` with  expected code **200**              | 
+| `test_03_get_valid_request`    | **Positve**: response from `/posts/100` with  expected code **200**           | 
+| `test_04_get_valid_request`    | **Positve**: response from `/posts/100/comments` with  expected code **200**  | 
+| `test_05_get_invalid_request`  | **Negative**: response from `/posts/0` with  expected code **400**            | 
+| `test_06_get_invalid_request`  | **Negative**: response from `/posts/O` with  expected code **400**            | 
+| `test_07_get_invalid_request`  | **Negative**: response from `/posts/!` with  expected code **404**            | 
+| `test_08_get_invalid_request`  | **Negative**: response from `/posts/101` with  expected code **404**          | 
+| `test_09_get_invalid_request`  | **Negative**: response from `/posts/101/comments` with  expected code **404** | 
+| `test_10_get_request_for_id`   | **Positve**: check expected data for id=64                                    | 
+| `test_11_post_valid_request`   | **Positve**: testing POST request with valid data                             | 
+| `test_12_post_invalid_request` | **Negative**: testing POST request with invalid userId                        | 
+| `test_13_post_invalid_request` | **Negative**: testing POST request with invalid body                          | 
+| `test_14_post_invalid_request` | **Negative**: testing POST request without userId                             | 
+| `test_15_post_invalid_request` | **Negative**: testing POST request with empty value                           | 
+| `test_16_post_invalid_request` | **Negative**: testing POST request without body                               | 
+| `test_17_put_valid_request`    | **Positve**: send `/posts/1` with valid data                                  | 
+| `test_18_put_invalid_request`  | **Negative**: send `/posts/1` with empty value                                | 
+| `test_19_put_invalid_request`  | **Negative**: send `/posts/1` with empty body                                 | 
+| `test_20_put_invalid_request`  | **Negative**: send `/posts/1` with invalid id                                 | 
+| `test_21_put_invalid_request`  | **Negative**: send `/posts/101` with invalid userId                           |
+| `test_22_delete_valid_request`       | **Positve**: send `/posts/1` with  expected code **200**                      | 
+|      `test_23_delete_valid_request`                           | **Positve**: send `/posts/100` with  expected code **200**                    | 
+|      `test_24_delete_invalid_request`                            | **Negative**: send `/posts/0` with  expected code **404**                     | 
+|    `test_25_delete_invalid_request`                              | **Negative**: send `/posts/101` with  expected code **404**                   | 
+|    `test_26_delete_invalid_request`                              | **Negative**: send `/posts/ ` with  expected code **404**                     | 
 
 
 
@@ -59,9 +58,10 @@ The tests are separated by the following tests, parameterized and contain severa
 pip3 install -r requirements.txt
 ```
 
-**Run:**
+**Run**
+To run one specification use the following command:
 ```
-pytest src/tests/test_posts.py
+pytest src/tests/test_api_get.py
 ```
 
 ## Run tests in docker
