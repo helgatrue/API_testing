@@ -59,6 +59,7 @@ pip3 install -r requirements.txt
 ```
 
 **Run**
+
 To run one specification use the following command:
 ```
 pytest src/tests/test_api_get.py
