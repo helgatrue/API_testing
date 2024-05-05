@@ -33,12 +33,12 @@ class JSONPlaceholder(object):
         return requests.get(self._make_url(endpoint), **kwargs)
 
     @parse_response
-    def post(self, endpoint=None, **kwargs):
-        return requests.post(self._make_url(endpoint), **kwargs)
+    def post(self, endpoint=None, data={}):
+        return requests.post(self._make_url(endpoint), data=data)
 
     @parse_response
-    def put(self, endpoint=None, **kwargs):
-        return requests.put(self._make_url(endpoint), **kwargs)
+    def put(self, endpoint=None, data={}):
+        return requests.put(self._make_url(endpoint), data=data)
 
     @parse_response
     def delete(self, endpoint=None, **kwargs):
