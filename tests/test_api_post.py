@@ -8,7 +8,7 @@ class TestPosts:
     def api(self):
         return JSONPlaceholder('https://jsonplaceholder.typicode.com')
 
-    @allure.title('Check response in POST request')
+    @allure.title('Check request with valid body')
     def test_11_post_valid_request(self, api):
         endpoint = "/posts/"
         data = {"title": "foo", "body": "bar", "userId": 1}
@@ -21,7 +21,7 @@ class TestPosts:
         assert body["userId"] == "1", "Post was created has wrong user id"
         assert body["id"] == 101
 
-    @allure.title('Check response in POST request')
+    @allure.title('Check request with invalid UserId')
     def test_12_post_invalid_request(self, api):
         endpoint = "/posts/"
         data = {"title": "foo", "body": "bar", "userId": "1"}
@@ -30,7 +30,7 @@ class TestPosts:
             "Actual response code does not equal expected code: {} != {}" \
                 .format(status_code, 400)
 
-    @allure.title('Check response in POST request')
+    @allure.title('Check request with invalid body')
     def test_13_post_invalid_request(self, api):
         endpoint = "/posts/"
         data = {"title": None, "body": None, "userId": None}
@@ -39,7 +39,7 @@ class TestPosts:
             "Actual response code does not equal expected code: {} != {}" \
                 .format(status_code, 400)
 
-    @allure.title('Check response in POST request')
+    @allure.title('Check request with missed userID')
     def test_14_post_invalid_request(self, api):
         endpoint = "/posts/ "
         data = {"title": "foo", "body": 'bar'}
@@ -48,7 +48,7 @@ class TestPosts:
             "Actual response code does not equal expected code: {} != {}" \
                 .format(status_code, 400)
 
-    @allure.title('Check response in POST request')
+    @allure.title('Check request with empty values in body')
     def test_15_post_invalid_request(self, api):
         endpoint = "/posts/"
         data = {"title": " ", "body": " ", "userId": " "}
@@ -57,7 +57,7 @@ class TestPosts:
             "Actual response code does not equal expected code: {} != {}" \
                 .format(status_code, 400)
 
-    @allure.title('Check response in POST request')
+    @allure.title('Check request with empty body')
     def test_16_post_invalid_request(self, api):
         endpoint = "/posts/"
         data = {}
